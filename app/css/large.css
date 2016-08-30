@@ -1,0 +1,43 @@
+.article_box:not(.no_image){
+    height: 500px !important;
+}
+
+.article_box .main_image,#article_details .main_image{
+    height: 600px !important;
+}
+
+#article_details .article_category{
+    height: 40px !important;
+    line-height:  40px;
+    font-size: 18px !important;
+}
+
+#article_details .article_title{
+    font-size: 22px !important;
+}
+
+#article_details .article_date,#article_details .article_tags{
+    font-size: 18px !important;
+}
+
+#article_details .article_text{
+    font-size: 16px !important;
+}
+
+.article_gallery_inner,.video_gallery_inner{
+    height: 200px !important;
+}
+
+.gallery_image,.video_thumbnail{
+    height: 180px !important;
+    width: 300px !important;
+}
+
+.small_title{
+    font-size: 18px !important;
+}
+
+.article_name_inner{
+    font-size: 20px !important;
+}
+

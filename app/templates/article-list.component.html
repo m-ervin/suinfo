@@ -1,0 +1,22 @@
+<ul id="article_list">
+<li *ngFor="let article of articles">
+    <a routerLink="/article/{{menuType}}/{{article.node.Nid}}">
+        <div class="article_box" [ngClass]="{'no_image': !article.node['Vodeca slika']}">
+            <div class="main_image" *ngIf="article.node['Vodeca slika']"
+            [ngStyle]="{'background-image':'url('+article.node['Vodeca slika']+')'}">
+            </div>
+            <span class="post_date">{{article.node["Post date"]}}</span>
+            <span *ngIf="article.node.Kategorija" class="category">{{article.node.Kategorija}}</span>
+            <div class="article_name_outer">
+                <span class="article_name_inner">{{article.node.Naslov}}</span>
+            </div>
+        </div>
+    </a>
+</li>
+</ul>
+
+<alert type="danger" *ngIf="globals.httpError">Greška čitanje podataka</alert>
+
+<div class="http_spinner" *ngIf="globals.httpLoading">
+    <i class="fa fa-spin fa-spinner" ></i>
+</div>

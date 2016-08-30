@@ -1,0 +1,44 @@
+<div id="article_details_outer" *ngIf="article">
+    <div id="article_details">
+        <div *ngIf="article.Kategorija" class="article_category">{{article.Kategorija|uppercase}}</div>
+        <a href="{{article['Vodeca slika']}}">
+            <div class="main_image" *ngIf="article['Vodeca slika']"
+            [ngStyle]="{'background-image':'url('+article['Vodeca slika']+')'}">
+            </div>
+        </a>
+        <div class="article_title">{{article.Naslov}}</div>
+        <div class="article_date">{{article['Post date']}}</div>
+        <div class="article_text" *ngIf="article['Sadrzaj clanka']">{{article['Sadrzaj clanka']}}</div>
+        <div class="article_tags" *ngIf="article['Tagovi']">
+            <span class="small_title">Tagovi:</span>
+            {{article['Tagovi']}}</div>
+    <!--    Picture gallery-->
+        <div class="article_gallery" *ngIf="article['Photo gallery']!=''">
+            <div class="small_title">Slike</div>
+                <div class="article_gallery_inner">
+                    <a href="{{gallery.Image}}" *ngFor="let gallery of article['Photo gallery']">
+                        <div class="gallery_image" 
+                        [ngStyle]="{'background-image':'url('+gallery.Image+')'}">
+                        </div>
+                    </a>
+                </div>
+        </div>
+    <!--        Video gallery-->
+        <div class="video_gallery" *ngIf="article['YouTube videos']!=''" >
+            <div class="small_title">Video galerija</div>
+                <div class="video_gallery_inner">
+                    <a *ngFor="let video of article['YouTube videos']" href="{{video.Video}}">            
+                        <img class="video_thumbnail" src="{{getThumbnail(video.Video)}}" alt="video">
+                    </a>
+                </div>
+        </div>    
+    </div>
+</div>
+    
+<alert type="danger" *ngIf="globals.httpError">Greška čitanje podataka</alert>
+
+<alert *ngIf="noArticle"  type='danger'>Članak ne postoji</alert>
+
+<div class="http_spinner" *ngIf="globals.httpLoading">
+    <i class="fa fa-spin fa-spinner" ></i>
+</div>

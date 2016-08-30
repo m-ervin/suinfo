@@ -1,0 +1,21 @@
+<ul id="search_list" *ngIf="(articles|json)!='[]'">
+<li *ngFor="let article of articles">
+    <a routerLink="/article/search/{{article.node.Nid}}">
+        <div class="search_article_box">
+            <div class="article_name_outer">
+                <span class="article_name_inner">{{article.node.Naslov}}</span>
+            </div>
+        </div>
+    </a>
+</li>
+</ul>
+
+<div *ngIf="(articles|json)=='[]'">
+    <alert type="warning">Ne postoji članak</alert>
+</div>
+
+<alert type="danger" *ngIf="globals.httpError">Greška čitanje podataka</alert>
+
+<div class="http_spinner" *ngIf="globals.httpLoading">
+    <i class="fa fa-spin fa-spinner" ></i>
+</div>
