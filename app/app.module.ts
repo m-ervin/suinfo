@@ -1,5 +1,5 @@
 import { NgModule }      from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppComponent }  from './app.component';
 import { routing } from './routing/app.routing';
@@ -14,6 +14,6 @@ import { Globals } from './globals/globals';
   imports: [ BrowserModule, FormsModule, routing, HttpModule ],
   declarations: [ AppComponent, SidemenuComponent, ArticleListComponent, ArticleSearchComponent ],
   bootstrap: [ AppComponent ],
-  providers:[ ArticleService, Globals ]
+  providers:[ ArticleService, Globals, Title ]
 })
 export class AppModule { }

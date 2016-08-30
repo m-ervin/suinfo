@@ -3,6 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { ArticleService } from './services/article.service';
 import { Router }    from '@angular/router';
 import { Globals } from './globals/globals';
+import { Title } from '@angular/platform-browser';
 
 @Component({
     templateUrl: 'app/templates/article-details.component.html'
@@ -13,7 +14,8 @@ export class ArticleDetailsComponent implements OnInit{
     constructor(private route: ActivatedRoute,
     private articleService: ArticleService,
     private globals: Globals,
-    private router: Router) {}
+    private router: Router,
+    private titleService: Title) {}
 
     private article: any;
     private noArticle = false;
@@ -35,8 +37,10 @@ export class ArticleDetailsComponent implements OnInit{
         this.articleService.getArticleDetails(endPoint,params['id']).subscribe(
                 response => {
                     this.globals.httpLoading = false; 
-                    if(response)
+                    if(response){
                         this.article = this.correctJson(response);
+                        this.titleService.setTitle("Subotica.info - " + this.article.Naslov);
+                    }
                     else
                         this.noArticle = true;
                 },

@@ -4,6 +4,7 @@ import { ArticleService } from './services/article.service';
 import { Globals } from './globals/globals';
 import { Router }    from '@angular/router';
 import { truncatePipe } from './pipes/truncate';
+import { Title } from '@angular/platform-browser';
 
 @Component({
     templateUrl: 'app/templates/article-list.component.html',
@@ -15,7 +16,8 @@ export class ArticleListComponent implements OnInit{
 constructor(private route: ActivatedRoute,
 private articleService: ArticleService,
 private globals: Globals,
-private router: Router) {}
+private router: Router,
+private titleService: Title) {}
 
 private articles: any;
 private menuType: string;
@@ -51,8 +53,10 @@ ngOnInit(): void{
 setPageTitle(urlName: string){
     var menuItems = this.globals.menuList;
     for(var index in menuItems){
-        if(menuItems[index].url == urlName)
+        if(menuItems[index].url == urlName){
             this.globals.categoryTitle=menuItems[index].name;
+            this.titleService.setTitle("Subotica.info - " + menuItems[index].name)
+        }
     }
 }
 
