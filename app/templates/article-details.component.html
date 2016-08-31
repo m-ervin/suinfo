@@ -5,6 +5,9 @@
             <div class="main_image" *ngIf="article['Vodeca slika']"
             [ngStyle]="{'background-image':'url('+article['Vodeca slika']+')'}">
             </div>
+            <div class="main_image" *ngIf="article['Panoramska slika']"
+            [ngStyle]="{'background-image':'url('+article['Panoramska slika']+')'}">
+            </div>            
         </a>
         <div class="article_title">{{article.Naslov}}</div>
         <div class="article_date">{{article['Post date']}}</div>

@@ -1,10 +1,13 @@
 <ul id="article_list">
 <li *ngFor="let article of articles">
     <a routerLink="/article/{{menuType}}/{{article.node.Nid}}">
-        <div class="article_box" [ngClass]="{'no_image': !article.node['Vodeca slika']}">
+        <div class="article_box" [ngClass]="{'no_image': !article.node['Vodeca slika'] && !article.node['Panoramska slika']}">
             <div class="main_image" *ngIf="article.node['Vodeca slika']"
             [ngStyle]="{'background-image':'url('+article.node['Vodeca slika']+')'}">
             </div>
+            <div class="main_image" *ngIf="article.node['Panoramska slika']"
+            [ngStyle]="{'background-image':'url('+article.node['Panoramska slika']+')'}">
+            </div>             
             <span class="post_date">{{article.node["Post date"]}}</span>
             <span *ngIf="article.node.Kategorija" class="category">{{article.node.Kategorija}}</span>
             <div class="article_name_outer">

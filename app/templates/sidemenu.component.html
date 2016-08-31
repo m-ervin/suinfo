@@ -6,6 +6,7 @@
                 <input type="textbox" placeholder="Pretraga" [(ngModel)]="searchKeyword" (keyup.enter)="searchEvent()" />
             </div>
         <div id="side-menu-items">
-            <a *ngFor="let menuItem of menuItems" routerLink="list/{{menuItem.url}}" (click)="closeMenu()">{{menuItem.name}}</a>
+            <a *ngFor="let menuItem of menuItems"  routerLink="list/{{menuItem.url}}" (click)="closeMenu()">
+                <span *ngIf="menuItem.url!='search'">{{menuItem.name}}</span></a>
         </div>
     </div>
