@@ -22,12 +22,12 @@ import { Globals } from './globals/globals';
                 display: "none",
             })),
             transition('inactive<=>active', animate('100ms ease-out'))
-        ]),        
-    ]    
+        ]),
+    ]
 })
 
-export class AppComponent { 
-    
+export class AppComponent {
+
 constructor(private globals: Globals){}
 
 menuToggleState(){
