@@ -11,10 +11,10 @@
 </ul>
 
 <div *ngIf="(articles|json)=='[]'">
-    <alert type="warning">Ne postoji članak</alert>
+  <div class="alert alert-danger" type="warning">Ne postoji članak</div>
 </div>
 
-<alert type="danger" *ngIf="globals.httpError">Greška čitanje podataka</alert>
+<div class="alert alert-danger" *ngIf="globals.httpError">Greška čitanje podataka</div>
 
 <div class="http_spinner" *ngIf="globals.httpLoading">
     <i class="fa fa-spin fa-spinner" ></i>

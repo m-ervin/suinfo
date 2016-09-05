@@ -19,23 +19,21 @@ import { Globals } from './globals/globals';
 })
 
 export class SidemenuComponent {
-    
+
 constructor(private globals: Globals,
-private router: Router) {}    
+private router: Router) {}
 
 private menuItems = this.globals.menuList;
-private searchKeyword = ''; 
+private searchKeyword = '';
 
   closeMenu(){
       this.globals.menuState = 'inactive';
-  } 
+  }
+
   
-  //Called when enter is pressed in the searchbox
   searchEvent(){
          this.closeMenu();
-         this.router.navigate(['/search/' + this.searchKeyword]);         
+         this.router.navigate(['/search/' + this.searchKeyword]);
   }
-  
+
 }
-
-

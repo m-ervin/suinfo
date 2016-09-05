@@ -7,7 +7,7 @@
             </div>
             <div class="main_image" *ngIf="article.node['Panoramska slika']"
             [ngStyle]="{'background-image':'url('+article.node['Panoramska slika']+')'}">
-            </div>             
+            </div>
             <span class="post_date">{{article.node["Post date"]}}</span>
             <span *ngIf="article.node.Kategorija" class="category">{{article.node.Kategorija}}</span>
             <div class="article_name_outer">
@@ -18,7 +18,7 @@
 </li>
 </ul>
 
-<alert type="danger" *ngIf="globals.httpError">Greška čitanje podataka</alert>
+<div class='alert alert-danger' type="danger" *ngIf="globals.httpError">Greška čitanje podataka</div>
 
 <div class="http_spinner" *ngIf="globals.httpLoading">
     <i class="fa fa-spin fa-spinner" ></i>

@@ -1,6 +1,6 @@
-    <div id="side-menu" @menuState="globals.menuState">   
+    <div id="side-menu" [@menuState]="globals.menuState">
             <div id="searchbox">
-                <a id='search-icon' routerLink="/search/{{searchKeyword}}" (click)="closeMenu()">          
+                <a id='search-icon' routerLink="/search/{{searchKeyword}}" (click)="closeMenu()">
                     <i class="fa fa-search"></i>
                 </a>
                 <input type="textbox" placeholder="Pretraga" [(ngModel)]="searchKeyword" (keyup.enter)="searchEvent()" />

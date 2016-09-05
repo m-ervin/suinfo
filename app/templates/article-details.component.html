@@ -7,7 +7,7 @@
             </div>
             <div class="main_image" *ngIf="article['Panoramska slika']"
             [ngStyle]="{'background-image':'url('+article['Panoramska slika']+')'}">
-            </div>            
+            </div>
         </a>
         <div class="article_title">{{article.Naslov}}</div>
         <div class="article_date">{{article['Post date']}}</div>
@@ -20,7 +20,7 @@
             <div class="small_title">Slike</div>
                 <div class="article_gallery_inner">
                     <a href="{{gallery.Image}}" *ngFor="let gallery of article['Photo gallery']">
-                        <div class="gallery_image" 
+                        <div class="gallery_image"
                         [ngStyle]="{'background-image':'url('+gallery.Image+')'}">
                         </div>
                     </a>
@@ -30,17 +30,17 @@
         <div class="video_gallery" *ngIf="article['YouTube videos']!=''" >
             <div class="small_title">Video galerija</div>
                 <div class="video_gallery_inner">
-                    <a *ngFor="let video of article['YouTube videos']" href="{{video.Video}}">            
+                    <a *ngFor="let video of article['YouTube videos']" href="{{video.Video}}">
                         <img class="video_thumbnail" src="{{getThumbnail(video.Video)}}" alt="video">
                     </a>
                 </div>
-        </div>    
+        </div>
     </div>
 </div>
-    
-<alert type="danger" *ngIf="globals.httpError">Greška čitanje podataka</alert>
 
-<alert *ngIf="noArticle"  type='danger'>Članak ne postoji</alert>
+<div class='alert alert-danger' *ngIf="globals.httpError">Greška čitanje podataka</div>
+
+<div *ngIf="(article|json)!=''" class='alert alert-danger' >Članak ne postoji</div>
 
 <div class="http_spinner" *ngIf="globals.httpLoading">
     <i class="fa fa-spin fa-spinner" ></i>

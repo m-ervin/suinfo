@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/Rx';
 
 @Injectable()
 export class ArticleService{
 
-  constructor(private http: Http) { } 
-  
+  constructor(private http: Http) { }
+
   //get articles in the category
   getArticleList(menuType: string){
     return this.http.get("http://www.subotica.info/restful-" + menuType)
                .map(response=>response.json().nodes);
-  }      
+  }
 
   //get specific article by id
   getArticleDetails(endPoint: string, id: number){
@@ -22,11 +23,11 @@ export class ArticleService{
                    if(result[index].node.Nid == id){
                         return result[index].node;
                    }
-                }              
+                }
                 return "";
           });
   }
-  
+
   //get articles searching by a keyword
   searchArticle(keyword: string){
       return this.http.get("https://www.subotica.info/restful-search?naslov=" + keyword)
