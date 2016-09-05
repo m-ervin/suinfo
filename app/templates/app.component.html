@@ -1,15 +1,15 @@
       <div id="header">
           <div id='menu-icon' (click)="menuToggleState()">
-          <i @iconState="globals.menuState" class="fa fa-bars"></i>
+          <i [@iconState]="globals.menuState" class="fa fa-bars"></i>
           </div>
           <div id="header-title-outer">
-              <span id="header-title">Subotica.info <span *ngIf="globals.categoryTitle">- {{globals.categoryTitle}}</span></span>   
+              <span id="header-title">Subotica.info <span *ngIf="globals.categoryTitle">- {{globals.categoryTitle}}</span></span>
           </div>
       </div>
       <sidemenu></sidemenu>
       <div id='scroller-container'>
         <div id="main-container">
-            <div id="menu-fade" @fadeState="globals.menuState" (click)="menuToggleState()"></div>
-        <router-outlet></router-outlet>      
+            <div id="menu-fade" [@fadeState]="globals.menuState" (click)="menuToggleState()"></div>
+        <router-outlet></router-outlet>
         </div>
       </div>

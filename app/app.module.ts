@@ -8,11 +8,13 @@ import { SidemenuComponent } from './sidemenu.component';
 import { ArticleListComponent } from './article-list.component';
 import { ArticleSearchComponent } from './article-search.component';
 import { ArticleService } from './services/article.service';
+import { ArticleDetailsComponent } from './article-details.component';
+import { NotFoundComponent } from './not-found.component';
 import { Globals } from './globals/globals';
 
 @NgModule({
   imports: [ BrowserModule, FormsModule, routing, HttpModule ],
-  declarations: [ AppComponent, SidemenuComponent, ArticleListComponent, ArticleSearchComponent ],
+  declarations: [ AppComponent, NotFoundComponent, SidemenuComponent, ArticleListComponent, ArticleSearchComponent, ArticleDetailsComponent ],
   bootstrap: [ AppComponent ],
   providers:[ ArticleService, Globals, Title ]
 })

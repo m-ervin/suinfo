@@ -23,20 +23,20 @@ export class ArticleDetailsComponent implements OnInit{
     ngOnInit(): void{
       this.route.params.forEach((params: Params) => {
 
-            if(!this.globals.menuTypeExists(params['type'])){ 
+            if(!this.globals.menuTypeExists(params['type'])){
                 this.router.navigate(['/404']);
-                return;  
-        }       
-        
+                return;
+        }
+
         var menuList = this.globals.menuList;
         for (var i in this.globals.menuList)
             if (params['type'] == menuList[i].url){
                 var endPoint = menuList[i].endPoint;
             }
-          
+
         this.articleService.getArticleDetails(endPoint,params['id']).subscribe(
                 response => {
-                    this.globals.httpLoading = false; 
+                    this.globals.httpLoading = false;
                     if(response){
                         this.article = this.correctJson(response);
                         this.titleService.setTitle("Subotica.info - " + this.article.Naslov);
@@ -45,32 +45,28 @@ export class ArticleDetailsComponent implements OnInit{
                         this.noArticle = true;
                 },
                 error => {
-                    this.globals.httpLoading = false; 
+                    this.globals.httpLoading = false;
                     this.globals.httpError = true;
                 }
-            );    
+            );
       });
 
-    }    
-    
-    //Create youtube thumbnail image from youtube link
+    }
+
     getThumbnail(url: string){
         var id = this.globals.youtubeParser(url);
         return "http://img.youtube.com/vi/" + id + "/default.jpg";
-    }       
-    
-    //converts string to an object (and corrects the json formatting mistake)
+    }
+
     correctJson(data: any) {
         var videoGallery = data['YouTube videos'];
-        var photoGallery = data['Photo gallery'];       
+        var photoGallery = data['Photo gallery'];
         data['YouTube videos'] = (videoGallery) ? this.hack(videoGallery) : '';
-        data['Photo gallery'] = (photoGallery) ? this.hack(photoGallery) : '';            
+        data['Photo gallery'] = (photoGallery) ? this.hack(photoGallery) : '';
         return data;
-    }    
-    
-    //create object from bad formatted json string
-    hack(str: string){
-        return JSON.parse(str.replace(",  ]","]")); 
-    }     
-}
+    }
 
+    hack(str: string){
+        return JSON.parse(str.replace(",  ]","]"));
+    }
+}
